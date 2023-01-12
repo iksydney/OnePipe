@@ -14,13 +14,19 @@ export class WeatherComponent implements OnInit {
   constructor(private wservice: WeatherService) { }
 
   ngOnInit(): void {
-    this.getSearchResults(this.city);
+    //this.getSearchResults(this.city);
+    this.wservice.onSearch(this.city)
+    .subscribe({
+      next: (response) => {
+        console.log(response);
+      }
+    });
   }
   
-  getSearchResults(data:any) {
-    this.wservice.onSearch(data).subscribe(
-      res => {},
-      err => {}
-    )
-  }
+  // getSearchResults(data:any) {
+  //   this.wservice.onSearch(data).subscribe(
+  //     res => {},
+  //     err => {}
+  //   )
+  // }
 }

@@ -16,10 +16,14 @@ export class WeatherService {
   // onSearch(city: string){
   //   return this.http.get(environment.apiUrl + 'city/:city?city='+city);
   // }
-  onSearch(city: string): Observable<ICity>
-  {
-    return this.http.get<ICity>(environment.apiUrl + 'city/:city?city='+city),
-    params: new HttpParams()
-    .set('mode', 'json')
+  // onSearch(city: string): Observable<ICity>
+  // {
+  //   return this.http.get<ICity>(environment.apiUrl + 'city/:city?city='+city,{
+  //     params: new HttpParams().set('mode', 'json')
+
+  //   })
+  // }
+  onSearch(city: string): Observable<ICity>{
+    return this.http.get<ICity>(environment.apiUrl + 'city/:city?city='+city)
   }
 }
