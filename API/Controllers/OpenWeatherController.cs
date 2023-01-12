@@ -18,6 +18,9 @@ namespace API.Controllers
         }
 
         [HttpGet("/city/:city")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> City(string city)
         {
             try

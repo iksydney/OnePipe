@@ -1,0 +1,16 @@
+a{
+    text-decoration: none;
+    color: #343a40;
+
+    &.active{
+        color: orange;
+    }
+}
+
+.navbar-brand{
+    cursor: pointer;
+    
+    &:focus{
+        outline: none;
+    }
+}
