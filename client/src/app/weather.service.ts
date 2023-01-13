@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ICity,  } from './shared/model';
 import {Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -23,7 +23,13 @@ export class WeatherService {
 
   //   })
   // }
-  onSearch(city: string): Observable<ICity>{
-    return this.http.get<ICity>(environment.apiUrl + 'city/:city?city='+city)
+  onSearch(city: string) {
+    return this.http.get(environment.apiUrl + 'city/:city?city='+city,
+    {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/xml'
+      }),
+      responseType: 'text'
+  })
   }
 }
