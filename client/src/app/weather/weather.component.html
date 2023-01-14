@@ -1,12 +1,12 @@
-<section class="vh-100" *ngIf="weatherData">
-    <div class="container py-5 h-100">
+<section class="vh-100">
+    <div class="container py-5 h-100" *ngIf="objs">
   
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-8 col-lg-6 col-xl-4">
   
           <h3 class="mb-4 pb-2 fw-normal">Check the current weather of any City</h3>
   
-          <div class="input-group rounded mb-3">
+          <form class="input-group rounded mb-3">
             <input type="search" class="form-control rounded" placeholder="City" aria-label="Search"
               aria-describedby="search-addon" />
             <a href="#!" type="button">
@@ -14,7 +14,7 @@
                 Find!
               </span>
             </a>
-          </div>
+        </form>
   
           <div class="mb-4 pb-2">
             <div class="form-check form-check-inline">

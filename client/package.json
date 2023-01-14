@@ -25,6 +25,7 @@
     "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
     "ngx-bootstrap": "^6.2.0",
+    "ngx-xml2json": "^1.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "xml-js": "^1.6.11",
