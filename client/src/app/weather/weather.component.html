@@ -6,15 +6,15 @@
   
           <h3 class="mb-4 pb-2 fw-normal">Check the current weather of any City</h3>
   
-          <form class="input-group rounded mb-3">
-            <input type="search" class="form-control rounded" placeholder="City" aria-label="Search"
-              aria-describedby="search-addon" />
+          <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()"  class="input-group rounded mb-3">
+            <input formControlName="citySearch" type="text" class="form-control rounded" placeholder="Search City" aria-label="Search"
+              aria-describedby="search-addon" name="city" />
             <a href="#!" type="button">
               <span class="input-group-text border-0 fw-bold" id="search-addon">
                 Find!
               </span>
             </a>
-        </form>
+          </form>
   
           <div class="mb-4 pb-2">
             <div class="form-check form-check-inline">

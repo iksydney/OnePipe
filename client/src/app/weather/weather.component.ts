@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import { Result } from '../shared/weatherxml';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxXml2jsonService } from 'ngx-xml2json';
 //import * as fastXmlParser from 'fast-xml-parser';
 //import * as xml2js from ‘xml2js’;
@@ -11,16 +11,36 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit {
-  city: any = 'lagos';
+  cityName: any = 'lagos';
   objs: any;
+  loginForm: FormGroup;
 
-  constructor(private wservice: WeatherService, private ngxXml2jsonService: NgxXml2jsonService) { }
+  constructor(private wservice: WeatherService, private ngxXml2jsonService: NgxXml2jsonService) {
+    
+   }
+
 
 
 
   //weatherData: Result | string = "";
-  ngOnInit(): void {
-    this.wservice.onSearch(this.city)
+  ngOnInit(): void 
+  {
+   this.createSearch(); 
+  }
+
+onSubmit(){
+  this.getWeatherData(this.loginForm.value);
+  //this.cityName= '';
+}
+
+createSearch(){
+  this.loginForm = new FormGroup({
+    citySearch : new FormControl('', Validators.required)
+  });
+}
+
+private getWeatherData(cityName: string){
+  this.wservice.onSearch(cityName)
       .subscribe({
         next: (response) => {
           //const xml = response;
