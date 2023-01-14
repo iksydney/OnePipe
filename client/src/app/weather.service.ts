@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ICity,  } from './shared/model';
 import {Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { Coord, Result } from './shared/weatherxml';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class WeatherService {
 
   //   })
   // }
-  onSearch(city: string) {
+  onSearch(city: string){
     return this.http.get(environment.apiUrl + 'city/:city?city='+city,
     {
     headers: new HttpHeaders({

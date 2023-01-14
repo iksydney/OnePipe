@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import { map, switchMap, tap } from 'rxjs/operators';
-
-
+import { Result } from '../shared/weatherxml';
+import { xml2js } from 'xml-js';
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit {
-  city: any = 'london';
+  city: any = 'lagos';
 
   constructor(private wservice: WeatherService) { }
 
-  ngOnInit(): void {
-    //this.getSearchResults(this.city);
+  
+
+  weatherData : Result | string = "";
+  ngOnInit(): void { 
     this.wservice.onSearch(this.city)
     .subscribe({
-      next: (response) => {
-        console.log(response);
+        next: (response) => {
+          const xml = response;
+          //const json = xml2json(xml)
+          this.weatherData = response;
+          console.log(response);
       }
-    });
+})
   }
-  
-  // getSearchResults(data:any) {
-  //   this.wservice.onSearch(data).subscribe(
-  //     res => {},
-  //     err => {}
-  //   )
-  // }
 }

@@ -23,7 +23,7 @@ export interface IWind {
     windDegree: number;
 }
 
-export interface Clouds {
+export interface IClouds {
     all: number;
 }
 
@@ -36,10 +36,17 @@ export interface ISys {
     sunset: number;
 }
 export interface ICity {
-coOrdinates:ICoord,
-weather: IWeather,
-main: IMain,
-wind: IWind,
-cloud: Clouds,
-sys: ISys
+coOrdinates:ICoord;
+weather: IWeather[];
+base:string;
+main: IMain;
+visibility: number;
+wind: IWind;
+cloud: IClouds;
+dt: number;
+sys: ISys;
+timezone: number
+id: number
+Title: string;
+cod: number
 }
