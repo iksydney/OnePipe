@@ -16,38 +16,40 @@ export class WeatherComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private wservice: WeatherService, private ngxXml2jsonService: NgxXml2jsonService) {
-    
+    this.loginForm = new FormGroup({
+      citySearch : new FormControl('', Validators.required)
+    });
    }
-
-
 
 
   //weatherData: Result | string = "";
   ngOnInit(): void 
   {
-   this.createSearch(); 
+   this.createSearch();
+   this.getWeatherData(this.loginForm.value.citySearch);
   }
 
 onSubmit(){
-  this.getWeatherData(this.loginForm.value);
+  
+  this.getWeatherData(this.loginForm.value.citySearch);
   //this.cityName= '';
 }
 
 createSearch(){
   this.loginForm = new FormGroup({
-    citySearch : new FormControl('', Validators.required)
+    citySearch : new FormControl('lagos', Validators.required)
   });
 }
 
-private getWeatherData(cityName: string){
+ getWeatherData(cityName: string){
   this.wservice.onSearch(cityName)
       .subscribe({
         next: (response) => {
           //const xml = response;
           const parser = new DOMParser();
           const xml = parser.parseFromString(response, 'text/xml');
-          const obj = this.ngxXml2jsonService.xmlToJson(xml);
-          this.objs = obj
+          const obj: any = this.ngxXml2jsonService.xmlToJson(xml);
+          this.objs = obj.ResponseOfWeatherData.Result
           console.log(this.objs);
           //this.city = data;
           //this.weatherData = response;

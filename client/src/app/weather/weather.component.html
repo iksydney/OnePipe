@@ -1,5 +1,5 @@
 <section class="vh-100">
-    <div class="container py-5 h-100" *ngIf="objs">
+    <div class="container py-5 h-100">
   
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-8 col-lg-6 col-xl-4">
@@ -9,11 +9,11 @@
           <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()"  class="input-group rounded mb-3">
             <input formControlName="citySearch" type="text" class="form-control rounded" placeholder="Search City" aria-label="Search"
               aria-describedby="search-addon" name="city" />
-            <a href="#!" type="button">
+            <button type="submit">
               <span class="input-group-text border-0 fw-bold" id="search-addon">
                 Find!
               </span>
-            </a>
+            </button>
           </form>
   
           <div class="mb-4 pb-2">
@@ -30,17 +30,20 @@
             </div>
           </div>
   
-          <div class="card shadow-0 border">
+          <div class="card shadow-0 border" *ngIf="objs !== undefined">
             <div class="card-body p-4">
-  
-              <h4 class="mb-1 sfw-normal">New York, US</h4>
-              <p class="mb-2">Current temperature: <strong>5.42°C</strong></p>
-              <p>Pressure: <strong>6.11°C</strong>, Humidity: <strong>3.89°C</strong></p>
-              <p>Max: <strong>6.11°C</strong>, Min: <strong>3.89°C</strong></p>
+              <h4 class="mb-1 sfw-normal">{{objs.Title}}, {{objs.Sys.Country}}</h4>
+              <p class="mb-2">{{objs.Weather.Weather.Description}}</p>
+              <p class="mb-2"><strong>{{objs.Main.MaximumTemperature | number : '1.1-1'}}°C</strong></p>
+              <p>Pressure: <strong>{{objs.Main.Pressure}}</strong>, Humidity: <strong>{{objs.Main.Humidity}}%</strong></p>
+              <p>Max: <strong>{{objs.Main.MaximumTemperature}}°C</strong>, Min: <strong>{{objs.Main.MinimumTemperature}}°C</strong></p>
 
 
               <h4 class="mb-1 sfw-normal">Co Ordinates</h4>
-              <p>Latitude: <strong>6.11°C</strong>, Longitude: <strong>3.89°C</strong></p>
+              <p>Latitude: <strong>{{objs.Coord.Latitude}}</strong>, Longitude: <strong>{{objs.Coord.Longitude}}</strong></p>
+              <p>Sunrise: <strong>{{objs.Sys.Sunrise}}</strong>, Sunset: <strong>{{objs.Sys.Sunset}}</strong></p>
+              <h4 class="mb-1 sfw-normal">Visibility</h4>
+              <p>{{objs.Visibility}}km</p>
 
               <div class="d-flex flex-row align-items-center">
                 <p class="mb-0 me-4">Scattered Clouds</p>
