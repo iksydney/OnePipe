@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:44311/'
+  apiUrl: 'https://localhost:44311/',
+  apiWeather : 'https://api.openweathermap.org',
+  apiKey : 'e6f28909c3423d99336d50720dfe753f',
+  apiHeader: 'appid'
 };
 
 /*

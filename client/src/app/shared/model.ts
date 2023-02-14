@@ -1,6 +1,6 @@
 export interface ICoord {
-    longitude: number;
-    latitude: number;
+    lon: number;
+    lat: number;
 }
 
 export interface IWeather {
@@ -15,7 +15,7 @@ export interface IMain {
     pressure: number;
     humidity: number;
     minimumTemperature: number;
-    maximumTemperature: number;
+    temp_max: number;
 }
 
 export interface IWind {
@@ -36,7 +36,7 @@ export interface ISys {
     sunset: number;
 }
 export interface ICity {
-coOrdinates:ICoord;
+coord:ICoord;
 weather: IWeather[];
 base:string;
 main: IMain;
@@ -47,6 +47,6 @@ dt: number;
 sys: ISys;
 timezone: number
 id: number
-Title: string;
+name: string;
 cod: number
 }

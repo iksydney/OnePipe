@@ -1,0 +1,74 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-4" *ngIf="weatherData; else notFound">
+
+        <h3 class="mb-4 pb-2 fw-normal">Check the current weather of any City</h3>
+
+        <div class="input-group rounded mb-3">
+          <input type="text" class="form-control rounded" placeholder="Search City" aria-label="Search"
+            aria-describedby="search-addon" name="cityName" [(ngModel)]="cityName" />
+          <button type="submit" (click)="onSearch()">
+            <span class="input-group-text border-0 fw-bold" id="search-addon">
+              Find!
+            </span>
+          </button>
+        </div>
+
+        <!-- <div><input type="text" id="first_name" name="first_name" [(ngModel)]="firstName"></div>
+        <h3> {{firstName}}</h3>
+
+        <button type="button" (click)="setValue()">Click here</button> -->
+
+
+        <div class="mb-4 pb-2">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"
+              checked />
+            <label class="form-check-label" for="inlineRadio1">Celsius</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+            <label class="form-check-label" for="inlineRadio2">Farenheit</label>
+          </div>
+        </div>
+
+        <div class="card shadow-0 border">
+          <div class="card-body p-4">
+            <div class="mb-1 sfw-normal">
+              <h2>{{weatherData.name}} : {{weatherData.sys.country}}</h2>
+            </div>
+            <p class="mb-2">Weather description : {{weatherData.weather[0].description}}</p>
+            <p class="mb-2"><strong>Max temp {{weatherData.main.temp_max | number: '1.0-0'}}°C</strong></p>
+            <p>Main Pressure: {{weatherData.main.pressure}},<strong> Humidity: main humid
+              </strong>{{weatherData.main.humidity}}%</p>
+            <p>Max: <strong>Main temp°C</strong>, Min: <strong> {{weatherData.main.temp_max | number:
+                '1.0-0'}}°C</strong></p>
+
+
+            <h4 class="mb-1 sfw-normal">Co Ordinates</h4>
+            <p>Latitude: <strong>Cordinates</strong>Latitude: {{weatherData.coord.lat}}</p>
+            <p>Longitude: <strong>Cordinates</strong>Longitude: {{weatherData.coord.lon}}</p>
+            <p><strong>Sunrise</strong> {{weatherData.sys.sunrise}} || <strong>Sunset:
+              </strong>{{weatherData.sys.sunset}}</p>
+            <h4 class="mb-1 sfw-normal">Visibility</h4>
+            <p>visibility in km {{weatherData.visibility}}</p>
+
+            <div class="d-flex flex-row align-items-center">
+              <p class="mb-0 me-4">Scattered Clouds</p>
+              <!-- <i class="fas fa-cloud fa-3x" style="color: #eee;">{{weatherData.weather[0].icon}}</i> -->
+              <img src="http://openweathermap.org/img/w/{{weatherData.weather[0].icon}}.png">
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <ng-template #notFound>
+        <p>The City You are looking for was not found.</p>
+      </ng-template>
+    </div>
+
+  </div>
+</section>

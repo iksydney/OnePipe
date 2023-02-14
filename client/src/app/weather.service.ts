@@ -33,4 +33,23 @@ export class WeatherService {
       responseType: 'text'
   })
   }
+
+  // getWeather(city: string) : Observable<ICity>
+  // {
+  //   return this.http.get<ICity>(environment.apiWeather + 
+  //     '/data/2.5/weather', {
+  //     params : new HttpParams()
+  //     .set('q', city),
+  //     headers: new HttpHeaders()
+  //     .set(environment.apiHeader, environment.apiKey)
+  //   });
+  // }
+//}
+getWeather(cityName: string) : Observable<ICity>
+  {
+    console.log(cityName);
+    console.log('Hjhh');    
+    return this.http.get<ICity>(environment.apiWeather + `/data/2.5/weather?q=${cityName}&appid=${environment.apiKey}`)
+    
+  }
 }
